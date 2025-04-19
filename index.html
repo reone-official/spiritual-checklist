@@ -5,91 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>셀프 체크리스트</title>
   <style>
-    body { font-family: 'Apple SD Gothic Neo', sans-serif; background:#fff; color:#333; margin:0; padding:2rem; max-width:600px; margin:auto; }
-    h1 { text-align:center; color:#444; font-size:1.8rem; margin-bottom:2rem; }
-    .section { margin-bottom:2.5rem; }
-    h2, h3 { color:#2c3e50; }
-    h2 { font-size:1.3rem; margin-bottom:1rem; }
-    h3 { font-size:1.2rem; margin-top:1.5rem; }
-    label { display:block; margin-bottom:0.6rem; cursor:pointer; }
-    textarea, input[type="text"] { width:100%; margin-top:0.5rem; padding:0.5rem; border:1px solid #ccc; border-radius:6px; }
-    .note { font-size:0.9rem; color:#777; margin-top:0.5rem; }
-    button { padding:0.7rem 1.5rem; font-size:1rem; border:none; border-radius:5px; background:#2c3e50; color:#fff; cursor:pointer; }
-    #result { display:none; }
-    ol { padding-left:1.2rem; }
+    body { font-family:'Apple SD Gothic Neo',sans-serif;background:#fff;color:#333;margin:0;padding:2rem;max-width:600px;margin:auto; }
+    h1 {text-align:center;color:#444;font-size:1.8rem;margin-bottom:2rem;}
+    .section {margin-bottom:2.5rem;}
+    h2,h3 {color:#2c3e50;}
+    h2 {font-size:1.3rem;margin-bottom:1rem;}
+    h3 {font-size:1.2rem;margin-top:1.5rem;}
+    label {display:block;margin-bottom:0.6rem;cursor:pointer;}
+    textarea,input[type="text"] {width:100%;margin-top:0.5rem;padding:0.5rem;border:1px solid #ccc;border-radius:6px;}
+    .note {font-size:0.9rem;color:#777;margin-top:0.5rem;}
+    button {padding:0.7rem 1.5rem;font-size:1rem;border:none;border-radius:5px;background:#2c3e50;color:#fff;cursor:pointer;}
+    #result {display:none;}
+    ol {padding-left:1.2rem;}
   </style>
 </head>
 <body>
   <h1>📘 나의 셀프 상태 점검</h1>
 
   <div id="form">
+    <!-- 1. 감정 체크 -->
     <div class="section" id="emotion">
       <h2>1. 이번 주 감정 체크</h2>
-      <!-- … 감정 체크 항목 … -->
+      <label><input type="checkbox" /> 두려움</label>
+      <label><input type="checkbox" /> 분노</label>
+      <label><input type="checkbox" /> 수치심</label>
+      <label><input type="checkbox" /> 혼란</label>
+      <label><input type="checkbox" /> 지침 / 피로</label>
+      <label><input type="checkbox" /> 무감각 / 공허</label>
+      <label><input type="checkbox" /> 무기력</label>
+      <label><input type="checkbox" /> 우울</label>
+      <label><input type="checkbox" /> 평안 (샬롬)</label>
+      <label><input type="checkbox" /> 기쁨</label>
+      <label><input type="checkbox" /> 기대감</label>
+      <label><input type="text" placeholder="기타 감정..." /></label>
     </div>
+
+    <!-- 2. 근원과 시선 -->
     <div class="section" id="origin">
       <h2>2. 감정의 근원과 시선 방향</h2>
-      <!-- … 근원 항목 … -->
+      <label><input type="checkbox" /> 사람의 반응</label>
+      <label><input type="checkbox" /> 내 상태나 능력</label>
+      <label><input type="checkbox" /> 과거의 경험</label>
+      <label><input type="checkbox" /> 미래에 대한 불안 / 기대</label>
+      <label><input type="checkbox" /> 상황 자체</label>
+      <label><input type="checkbox" /> 내 감정 자체</label>
+      <label><input type="checkbox" /> 하나님의 성품 / 말씀</label>
+      <label><input type="checkbox" /> 십자가</label>
+      <label><input type="checkbox" /> 공동체</label>
+      <label><input type="checkbox" /> 사명 / 비전</label>
+      <label><input type="checkbox" /> 정체 모름 (흐릿함)</label>
     </div>
+
+    <!-- 3. 반복된 생각/말/행동 -->
     <div class="section" id="thoughts">
       <h2>3. 반복된 생각/말/행동</h2>
       <textarea placeholder="이번 주 자주 떠오른 생각, 말, 행동을 간단히 기록해보세요."></textarea>
     </div>
+
+    <!-- 4. 내 반응 -->
     <div class="section" id="reaction">
       <h2>4. 내 반응</h2>
-      <!-- … 내 반응 항목 … -->
+      <label><input type="checkbox" /> 예배나 기도를 피하거나 미뤘다</label>
+      <label><input type="checkbox" /> 말씀 묵상이나 적용을 멈췄다</label>
+      <label><input type="checkbox" /> 감정을 억눌렀거나 폭발시켰다</label>
+      <label><input type="checkbox" /> 관계를 피하거나 단절시켰다</label>
+      <label><input type="checkbox" /> 자극적이거나 중독적인 행동을 반복했다</label>
+      <label><input type="checkbox" /> 비교, 자책, 부정적인 생각이 많았다</label>
+      <label><input type="checkbox" /> 겉으론 괜찮지만 내면은 지쳐 있었다</label>
+      <label><input type="checkbox" /> 타인을 판단하거나 원망했다</label>
+      <label><input type="checkbox" /> 일부러 바쁘게 움직이며 감정을 회피했다</label>
       <div class="note">※ 3개 이상 체크 시 주의가 필요합니다.</div>
     </div>
+
+    <!-- 5. 영적 흐름 진단 -->
     <div class="section" id="flow">
       <h2>🧭 영적 흐름 진단 (자가 체크)</h2>
-      <!-- 미혹 (q1–q5) -->
+      <!-- 미혹 -->
       <label><input type="checkbox" id="q1" /> 말씀보다 내 느낌이나 개인 계시에 더 의지하여 결정을 내린 적이 있나요?</label>
-      <label><input type="checkbox" id="q2" /> 리더나 멘토의 조언을 듣기 전에 먼저 감정적으로 선을 긋거나 무시한 적이 있나요?</label>
-      <label><input type="checkbox" id="q3" /> 공동체나 말씀보다 내가 받은 '영적 느낌'을 더 신뢰해서 행동한 적이 있나요?</label>
-      <label><input type="checkbox" id="q4" /> 분위기나 감정이 좋지 않으면 말씀을 듣지 않거나 적용을 미룬 적이 있나요?</label>
-      <label><input type="checkbox" id="q5" /> 공동체가 주는 피드백을 무시하고 내 방식대로 결정한 경험이 자주 있나요?</label>
-      <!-- 음란 (q6–q10) -->
-      <label><input type="checkbox" id="q6" /> 은혜가 '느껴지지 않는다'는 이유로 예배나 기도를 건너뛴 적이 있나요?</label>
-      <label><input type="checkbox" id="q7" /> 감정적 자극이나 분위기가 없으면 금방 지루해하고 집중을 잃나요?</label>
-      <label><input type="checkbox" id="q8" /> 반복적으로 음란 콘텐츠나 행동에 빠지고, 나중에 후회한 적이 있나요?</label>
-      <label><input type="checkbox" id="q9" /> 자극 있는 신앙 활동만 선호하고, 깊은 묵상이나 순종은 피한 적이 있나요?</label>
-      <label><input type="checkbox" id="q10" /> 감정 기복에 따라 예배 태도나 신앙 집중도가 크게 바뀌나요?</label>
-      <!-- 가난 (q11–q15) -->
-      <label><input type="checkbox" id="q11" /> 다른 사람의 성공이나 축복에 대해 질투나 불편함을 느낀 적이 있나요?</label>
-      <label><input type="checkbox" id="q12" /> 늘 가진 것이 부족하다고 느끼며, 헌신이나 나눔이 부담스럽게 느껴지나요?</label>
-      <label><input type="checkbox" id="q13" /> 필요한 자원이 없어질까 봐 두려워서 나눔을 미룬 적이 있나요?</label>
-      <label><input type="checkbox" id="q14" /> 누군가에게 도움을 요청하거나 필요를 말하는 것이 자존심 상한다고 느끼나요?</label>
-      <label><input type="checkbox" id="q15" /> 하나님보다 물질이나 능력, 시간 등 자원에 더 의지하게 되는 편인가요?</label>
-      <!-- 분열 (q16–q20) -->
-      <label><input type="checkbox" id="q16" /> 리더의 의견이나 지시보다 내 생각이 더 맞다고 느껴 고집한 적이 있나요?</label>
-      <label><input type="checkbox" id="q17" /> 공동체 안에서 불편한 사람이 생기면 거리를 두거나 소그룹 이동을 고민하나요?</label>
-      <label><input type="checkbox" id="q18" /> 공동체 안에서 자주 비판적 말을 하거나 속으로 판단한 적이 있나요?</label>
-      <label><input type="checkbox" id="q19" /> 권위 있는 사람의 조언을 쉽게 신뢰하지 못하고 의심한 적이 있나요?</label>
-      <label><input type="checkbox" id="q20" /> '나만의 방식'으로 따로 움직이려 했던 경험이 반복되나요?</label>
-      <!-- 분리(고립) (q21–q25) -->
-      <label><input type="checkbox" id="q21" /> 사람들과 함께 있으면 피곤하고, 모임을 피하려 한 적이 많나요?</label>
-      <label><input type="checkbox" id="q22" /> 감정적으로 지쳐 예배나 기도를 하지 않는 날이 늘고 있나요?</label>
-      <label><input type="checkbox" id="q23" /> '내 문제는 아무도 이해 못 해'라고 생각하며 말문을 닫은 적이 있나요?</label>
-      <label><input type="checkbox" id="q24" /> 공동체에 속해 있지만 외롭고 단절된 느낌이 지속되나요?</label>
-      <label><input type="checkbox" id="q25" /> 아무것도 하고 싶지 않아, 방 안에만 있고 싶은 날이 많아졌나요?</label>
-      <!-- 분리(왜곡) (q26–q30) -->
-      <label><input type="checkbox" id="q26" /> 다른 사람의 말을 확인하지 않고, 감정만으로 의도를 판단한 적이 있나요?</label>
-      <label><input type="checkbox" id="q27" /> 어떤 말이나 행동에 나쁜 의도를 먼저 생각한 적이 많나요?</label>
-      <label><input type="checkbox" id="q28" /> 리더나 공동체의 말에 상처받고 신뢰가 무너져 거리두기를 한 적이 있나요?</label>
-      <label><input type="checkbox" id="q29" /> 감정이 올라올 때 과거 사건을 왜곡되게 기억하거나 확대해석한 적이 있나요?</label>
-      <label><input type="checkbox" id="q30" /> 확인이나 대화 없이 감정에 따라 판단하고 행동한 적이 반복되나요?</label>
-      <!-- 종교 (q31–q35) -->
-      <label><input type="checkbox" id="q31" /> 신앙생활을 열심히 하지만 마음은 메마르고 공허하다고 느껴지나요?</label>
-      <label><input type="checkbox" id="q32" /> 예배나 기도를 형식적으로 하면서도 생명이 느껴지지 않나요?</label>
-      <label><input type="checkbox" id="q33" /> 정해진 시간과 순서에만 집중하고 감정적 연결은 부족하다고 느끼나요?</label>
-      <label><input type="checkbox" id="q34" /> 하나님의 임재나 음성보다는 일정을 맞추는 데만 집중하나요?</label>
-      <label><input type="checkbox" id="q35" /> 주변보다 더 열심히 하는 자신을 보며 안도감을 느낀 적이 있나요?</label>
-      <!-- 중독 (q36–q40) -->
-      <label><input type="checkbox" id="q36" /> 음란물, SNS, 게임 등 멈추고 싶지만 계속 반복되는 행동이 있나요?</label>
-      <label><input type="checkbox" id="q37" /> 감정적으로 힘들 때마다 자극적인 것에 도피하듯 빠진 적이 많나요?</label>
-      <label><input type="checkbox" id="q38" /> “이 정도는 괜찮겠지” 하며 반복된 행동을 정당화한 적이 있나요?</label>
-      <label><input type="checkbox" id="q39" /> 같은 행동 반복으로 자존감이 무너지고 스스로를 미워하게 된 적이 있나요?</label>
-      <label><input type="checkbox" id="q40" /> 외로울 때 사람보다 자극이나 중독된 습관에 더 쉽게 위로를 구하나요?</label>
+      <label><input type="checkbox" id="q2" /> 리더나 멘토 조언 전 감정적으로 선을 긋거나 무시한 적 있나요?</label>
+      <label><input type="checkbox" id="q3" /> 공동체보다 '영적 느낌'을 더 신뢰해 행동한 적 있나요?</label>
+      <label><input type="checkbox" id="q4" /> 분위기가 나쁘면 말씀을 피하거나 적용을 미룬 적 있나요?</label>
+      <label><input type="checkbox" id="q5" /> 피드백 무시하고 내 방식대로 결정한 경험이 있나요?</label>
+      <!-- 음란 -->
+      <label><input type="checkbox" id="q6" /> 은혜가 안 느껴진다며 예배/기도를 건너뛴 적이 있나요?</label>
+      <label><input type="checkbox" id="q7" /> 자극 없으면 금방 지루해하고 집중 못하나요?</label>
+      <label><input type="checkbox" id="q8" /> 음란물/행동 반복 후 후회한 적 있나요?</label>
+      <label><input type="checkbox" id="q9" /> 자극적 신앙 활동만 선호하고 묵상/순종은 피하나요?</label>
+      <label><input type="checkbox" id="q10" /> 감정 기복에 따라 예배 태도가 바뀌나요?</label>
+      <!-- 가난 -->
+      <label><input type="checkbox" id="q11" /> 다른 사람 축복에 질투나 불편함을 느낀 적 있나요?</label>
+      <label><input type="checkbox" id="q12" /> 늘 부족하다 느껴 헌신/나눔이 부담스러운가요?</label>
+      <label><input type="checkbox" id="q13" /> 자원 잃음 두려워 나눔을 미룬 적 있나요?</label>
+      <label><input type="checkbox" id="q14" /> 도움 요청이 자존심 상해 미룬 적 있나요?</label>
+      <label><input type="checkbox" id="q15" /> 하나님보다 자원(물질/능력)에 의존하나요?</label>
+      <!-- 분열 -->
+      <label><input type="checkbox" id="q16" /> 리더 의견보다 내 생각이 맞다며 고집한 적 있나요?</label>
+      <label><input type="checkbox" id="q17" /> 공동체 불편한 사람 생기면 거리를 두었나요?</label>
+      <label><input type="checkbox" id="q18" /> 속으로 비판적 언행을 자주 했나요?</label>
+      <label><input type="checkbox" id="q19" /> 권위자 조언을 의심하거나 신뢰 못 했나요?</label>
+      <label><input type="checkbox" id="q20" /> 나만의 방식으로 따로 움직이려 했나요?</label>
+      <!-- 분리(고립) -->
+      <label><input type="checkbox" id="q21" /> 모임이 피곤해 자주 피했나요?</label>
+      <label><input type="checkbox" id="q22" /> 지쳐 예배/기도 조차 하지 않은 날이 있나요?</label>
+      <label><input type="checkbox" id="q23" /> '아무도 내 상황 이해 못 해' 말문 닫은 적 있나요?</label>
+      <label><input type="checkbox" id="q24" /> 공동체에 있지만 외롭고 단절된 느낌이 있나요?</label>
+      <label><input type="checkbox" id="q25" /> 아무것도 하고 싶지 않아 방에만 있었나요?</label>
+      <!-- 분리(왜곡) -->
+      <label><input type="checkbox" id="q26" /> 확인 없이 감정으로 남 의도 판단한 적 있나요?</label>
+      <label><input type="checkbox" id="q27" /> 먼저 나쁜 의도를 생각한 적이 있나요?</label>
+      <label><input type="checkbox" id="q28" /> 말에 상처받아 신뢰가 무너진 적 있나요?</label>
+      <label><input type="checkbox" id="q29" /> 과거 사건을 왜곡/확대해석 했나요?</label>
+      <label><input type="checkbox" id="q30" /> 대화 없이 감정으로 판단/행동 했나요?</label>
+      <!-- 종교 -->
+      <label><input type="checkbox" id="q31" /> 신앙은 열심인데 꼭 공허하다고 느끼나요?</label>
+      <label><input type="checkbox" id="q32" /> 예배/기도가 형식적으로 느껴지나요?</label>
+      <label><input type="checkbox" id="q33" /> 연결 없이 사역만 수행하나요?</label>
+      <label><input type="checkbox" id="q34" /> 일정 지키는 데만 집중하나요?</label>
+      <label><input type="checkbox" id="q35" /> 열심히 하는 자신에 안도감을 느끼나요?</label>
+      <!-- 중독 -->
+      <label><input type="checkbox" id="q36" /> 반복 실패로 자존감이 무너진 적 있나요?</label>
+      <label><input type="checkbox" id="q37" /> 음란/SNS/게임 등 멈추고 싶지만 못 멈추나요?</label>
+      <label><input type="checkbox" id="q38" /> 자극 찾아 도피하듯 빠진 적 있나요?</label>
+      <label><input type="checkbox" id="q39" /> 반복 행동을 정당화한 적 있나요?</label>
+      <label><input type="checkbox" id="q40" /> 외로울 때 중독된 습관에 위로를 구하나요?</label>
     </div>
     <div class="section">
       <button type="button" onclick="showResult()">제출하고 결과 보기</button>
@@ -108,44 +146,38 @@
 
   <script>
     function showResult() {
+      // 감정 반응
       const rCount = document.querySelectorAll('#reaction input[type=checkbox]:checked').length;
       const rText = rCount >= 5 ? '감정에 강하게 이끌린 반응' : rCount >= 3 ? '감정 주도 반응 있음' : '안정적';
       document.getElementById('reactionResult').innerText = rText;
+
+      // 흐름 체크
       const ranges = {
-        '미혹': [1,5],
-        '음란': [[6,10]],
-        '가난': [11,15],
-        '분열': [16,20],
-        '분리(고립)': [21,25],
-        '분리(왜곡)': [26,30],
-        '종교': [31,35],
-        '중독': [36,40]
+        '미혹':[1,5],
+        '음란':[[6,10]],
+        '가난':[11,15],
+        '분열':[16,20],
+        '분리(고립)':[21,25],
+        '분리(왜곡)':[26,30],
+        '종교':[31,35],
+        '중독':[36,40]
       };
       const flowCounts = {};
-      Object.entries(ranges).forEach(([flow, range]) => {
-        let cnt = 0;
-        if (Array.isArray(range[0])) {
-          range.forEach(([s,e]) => {
-            for (let i=s; i<=e; i++) {
-              const el = document.getElementById('q'+i);
-              if (el && el.checked) cnt++;
-            }
-          });
+      Object.entries(ranges).forEach(([flow,range])=>{
+        let cnt=0;
+        if(Array.isArray(range[0])){
+          range.forEach(([s,e])=>{for(let i=s;i<=e;i++){const el=document.getElementById('q'+i); if(el&&el.checked)cnt++;}});
         } else {
-          const [s,e] = range;
-          for (let i=s; i<=e; i++) {
-            const el = document.getElementById('q'+i);
-            if (el && el.checked) cnt++;
-          }
+          const [s,e]=range; for(let i=s;i<=e;i++){const el=document.getElementById('q'+i); if(el&&el.checked)cnt++;}
         }
-        flowCounts[flow] = cnt;
+        flowCounts[flow]=cnt;
       });
-      const sorted = Object.entries(flowCounts).sort((a,b)=>b[1]-a[1]);
-      const ol = document.getElementById('flowRanking'); ol.innerHTML='';
-      sorted.forEach(([flow,count])=>{ if(count>0){ const li=document.createElement('li'); li.innerText=`${flow}: ${count}개`; ol.appendChild(li);} });
-      if(!ol.children.length){ const li=document.createElement('li'); li.innerText='영향받은 흐름이 없습니다.'; ol.appendChild(li);}      
-      document.getElementById('form').style.display='none';
-      document.getElementById('result').style.display='block';
+      // 순위
+      const sorted=Object.entries(flowCounts).sort((a,b)=>b[1]-a[1]);
+      const ol=document.getElementById('flowRanking'); ol.innerHTML='';
+      sorted.forEach(([fl,c])=>{ if(c>0){const li=document.createElement('li'); li.innerText=`${fl}: ${c}개`; ol.appendChild(li);} });
+      if(!ol.children.length){const li=document.createElement('li'); li.innerText='영향받은 흐름이 없습니다.'; ol.appendChild(li);}      
+      document.getElementById('form').style.display='none'; document.getElementById('result').style.display='block';
     }
   </script>
 </body>
