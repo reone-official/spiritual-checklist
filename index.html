@@ -21,7 +21,7 @@
 
   <!-- ========== FORM ========== -->
   <div id="form">
-    <!-- 1. 이번 주 감정 체크 -->
+    <!-- 1. 감정 체크 -->
     <div class="section" id="emotion">
       <h2>1. 이번 주 감정 체크</h2>
       <label><input type="checkbox" /> 두려움</label>
@@ -38,7 +38,7 @@
       <label><input type="text" placeholder="기타 감정..." /></label>
     </div>
 
-    <!-- 2. 감정의 근원과 시선 방향 -->
+    <!-- 2. 근원과 시선 -->
     <div class="section" id="origin">
       <h2>2. 감정의 근원과 시선 방향</h2>
       <label><input type="checkbox" /> 사람의 반응</label>
@@ -54,7 +54,7 @@
       <label><input type="checkbox" /> 정체 모름 (흐릿함)</label>
     </div>
 
-    <!-- 3. 반복된 생각/말/행동 -->
+    <!-- 3. 반복된 생각 -->
     <div class="section" id="thoughts">
       <h2>3. 반복된 생각/말/행동</h2>
       <textarea placeholder="이번 주 자주 떠오른 생각, 말, 행동을 간단히 기록해보세요."></textarea>
@@ -93,7 +93,7 @@
       <label><input type="checkbox" id="q122" /> 자원을 잃을까 두려워 나눔을 꺼린다</label>
       <label><input type="checkbox" id="q123" /> 도움을 요청하는 게 자존심 상한다</label>
       <label><input type="checkbox" id="q124" /> 하나님의 공급보다 자원에 의존한다</label>
-      <label><input type="checkbox" id="q126" /> 내 생각이 리더보다 옳다고 느낀다</label>
+      <label><input type="checkbox" id="q126" /> 내 생각이 리더보다 옳다고 느껴진다</label>
       <label><input type="checkbox" id="q127" /> 공동체 내에서 자주 거리감을 느껴진다</label>
       <label><input type="checkbox" id="q128" /> 비판적 언행을 자주 하게 된다</label>
       <label><input type="checkbox" id="q129" /> 권위자를 신뢰하기 어렵다</label>
@@ -103,18 +103,6 @@
       <label><input type="checkbox" id="q134" /> 아무도 내 상황을 이해 못한다고 느껴진다</label>
       <label><input type="checkbox" id="q135" /> 공동체에 있어도 외롭다</label>
       <label><input type="checkbox" id="q136" /> 아예 아무것도 하기 싫고 방에만 있고 싶다</label>
-      <label><input type="checkbox" id="q138" /> 감정만으로 타인을 오해하거나 판단했다</label>
-      <label><input type="checkbox" id="q139" /> 말/행동을 나쁘게 해석한 적이 있다</label>
-      <label><input type="checkbox" id="q140" /> 공동체나 리더에 대한 신뢰가 무너졌다</label>
-      <label><input type="checkbox" id="q141" /> 과거 사건을 과장하거나 반복해서 떠올렸다</label>
-      <label><input type="checkbox" id="q142" /> 대화 없이 감정으로 결론 내렸다</label>
-      <label><input type="checkbox" id="q144" /> 신앙은 열심인데 마음은 메마르다</label>
-      <label><input type="checkbox" id="q145" /> 예배/기도가 형식적으로만 느껴진다</label>
-      <label><input type="checkbox" id="q146" /> 일정을 지키는 게 본질보다 중요하게 느껴진다</label>
-      <label><input type="checkbox" id="q147" /> 감정적 연결 없이 사역을 수행한다</label>
-      <label><input type="checkbox" id="q148" /> 열심히 하는 자신을 보며 안도감을 느껴진다</label>
-      <label><input type="checkbox" id="q153" /> 감정적으로 힘들면 자극을 찾는다</label>
-      <label><input type="checkbox" id="q154" /> 반복된 행동을 합리화한 적 있다</label>
     </div>
 
     <div class="section">
@@ -134,41 +122,35 @@
 
   <script>
     function showResult() {
-      // 1) 내 반응 집계
-      const rCount = [...document.querySelectorAll('#reaction input[type=checkbox]')]
-                       .filter(c => c.checked).length;
+      // 감정 반응 집계
+      const rCount = document.querySelectorAll('#reaction input[type=checkbox]:checked').length;
+      const rText = rCount >= 5 ? '감정에 강하게 이끌린 반응' : rCount >= 3 ? '감정 주도 반응 있음' : '안정적';
+      document.getElementById('reactionResult').innerText = rText;
 
-      // 2) 흐름별 집계
+      // 영적 흐름 진단 집계
       const ranges = {
-        '미혹':[81,85], '음란':[86,90],
-        '가난':[91,95], '분열':[96,100],
-        '고립':[101,105], '왜곡':[106,110],
-        '종교':[111,115]
+        '미혹': [108,112],
+        '음란': [150,152],
+        '가난': [120,124],
+        '분열': [126,130],
+        '고립': [132,136],
+        '왜곡': [138,142],
+        '종교': [144,148]
       };
-      const flowCounts = {};
-      for (let [key,[s,e]] of Object.entries(ranges)) {
+      let flowCounts = {};
+      Object.entries(ranges).forEach(([flow,[s,e]]) => {
         let cnt = 0;
         for (let i=s; i<=e; i++) {
-          const el = document.getElementById('q'+i);
+          const el = document.getElementById(`q${i}`);
           if (el && el.checked) cnt++;
         }
-        flowCounts[key] = cnt;
-      }
-      const [topFlow, topNum] = Object.entries(flowCounts)
-                                    .sort((a,b)=>b[1]-a[1])[0] || [null,0];
-
-      // 3) 텍스트 매핑
-      const rText = rCount>=5 ? '강하게 이끌림' :
-                    rCount>=3 ? '주도 반응' : '안정';
-      const flowText = topNum>0 ?
-                       `${topFlow} 흐름에 영향 (${topNum}개)` :
-                       '특별한 흐름 없음';
-
-      // 4) 결과 표시
-      document.getElementById('reactionResult').innerText = rText;
+        flowCounts[flow] = cnt;
+      });
+      const [topFlow, topNum] = Object.entries(flowCounts).sort((a,b)=>b[1]-a[1])[0] || [null,0];
+      const flowText = topNum > 0 ? `지금 ${topFlow} 흐름에 영향받고 있습니다. (${topNum}개)` : '특별히 두드러지는 흐름 없음';
       document.getElementById('flowResult').innerText = flowText;
 
-      // 5) 토글
+      // 토글
       document.getElementById('form').style.display = 'none';
       document.getElementById('result').style.display = 'block';
     }
