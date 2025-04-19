@@ -75,7 +75,7 @@
       <div class="note">※ 3개 이상 체크 시 감정 주도 반응, 5개 이상은 회복이 필요합니다.</div>
     </div>
 
-    <!-- 6. 영적 흐름 진단 -->
+    <!-- 5. 영적 흐름 진단 -->
     <div class="section" id="flow">
       <h2>🧭 영적 흐름 진단 (자가 체크)</h2>
       <label><input type="checkbox" id="q108" /> 말씀보다 내 느낌이나 계시에 더 의지했다</label>
@@ -100,7 +100,7 @@
       <label><input type="checkbox" id="q130" /> 나만의 방식으로 따로 행동하려 한다</label>
       <label><input type="checkbox" id="q132" /> 사람들과 있는 것이 피곤하고 불편하다</label>
       <label><input type="checkbox" id="q133" /> 예배/기도에 점점 소극적이다</label>
-      <label><input type="checkbox" id="q134" /> 아무도 내 상황을 이해 못한다고 느낀다</label>
+      <label><input type="checkbox" id="q134" /> 아무도 내 상황을 이해 못한다고 느껴진다</label>
       <label><input type="checkbox" id="q135" /> 공동체에 있어도 외롭다</label>
       <label><input type="checkbox" id="q136" /> 아예 아무것도 하기 싫고 방에만 있고 싶다</label>
       <label><input type="checkbox" id="q138" /> 감정만으로 타인을 오해하거나 판단했다</label>
@@ -112,7 +112,7 @@
       <label><input type="checkbox" id="q145" /> 예배/기도가 형식적으로만 느껴진다</label>
       <label><input type="checkbox" id="q146" /> 일정을 지키는 게 본질보다 중요하게 느껴진다</label>
       <label><input type="checkbox" id="q147" /> 감정적 연결 없이 사역을 수행한다</label>
-      <label><input type="checkbox" id="q148" /> 열심히 하는 자신을 보며 안도감을 느낀다</label>
+      <label><input type="checkbox" id="q148" /> 열심히 하는 자신을 보며 안도감을 느껴진다</label>
       <label><input type="checkbox" id="q153" /> 감정적으로 힘들면 자극을 찾는다</label>
       <label><input type="checkbox" id="q154" /> 반복된 행동을 합리화한 적 있다</label>
     </div>
@@ -127,18 +127,16 @@
     <h2>📊 결과 요약</h2>
     <ul>
       <li>많이 체크된 감정 반응: <strong id="reactionResult"></strong></li>
-      <li>가장 영향을 끼친 영적흐름: <strong id="flowResult"></strong></li>
+      <li>가장 영향을 끼친 흐름: <strong id="flowResult"></strong></li>
     </ul>
     <div class="note">새로고침하면 다시 작성할 수 있습니다.</div>
   </div>
 
   <script>
     function showResult() {
-      // 1) 반응·회복 집계
+      // 1) 내 반응 집계
       const rCount = [...document.querySelectorAll('#reaction input[type=checkbox]')]
                        .filter(c => c.checked).length;
-      const recCount = [...document.querySelectorAll('#recovery input[type=checkbox]')]
-                         .filter(c => c.checked).length;
 
       // 2) 흐름별 집계
       const ranges = {
@@ -162,15 +160,12 @@
       // 3) 텍스트 매핑
       const rText = rCount>=5 ? '강하게 이끌림' :
                     rCount>=3 ? '주도 반응' : '안정';
-      const recText = recCount>=5 ? '활발' :
-                      recCount>=2 ? '중간' : '미미';
       const flowText = topNum>0 ?
                        `${topFlow} 흐름에 영향 (${topNum}개)` :
                        '특별한 흐름 없음';
 
       // 4) 결과 표시
       document.getElementById('reactionResult').innerText = rText;
-      document.getElementById('recoveryResult').innerText = recText;
       document.getElementById('flowResult').innerText = flowText;
 
       // 5) 토글
