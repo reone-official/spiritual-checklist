@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>셀프 체크리스트</title>
+  <style>
+    body { font-family: 'Apple SD Gothic Neo', sans-serif; background-color: #fff; color: #333; margin: 0; padding: 2rem; max-width: 600px; margin: auto; }
+    h1 { text-align: center; color: #444; font-size: 1.8rem; margin-bottom: 2rem; }
+    .section { margin-bottom: 2.5rem; }
+    h2 { font-size: 1.3rem; color: #2c3e50; margin-bottom: 1rem; }
+    label { display: block; margin-bottom: 0.6rem; cursor: pointer; }
+    textarea, input[type="text"] { width: 100%; margin-top: 0.5rem; padding: 0.5rem; border: 1px solid #ccc; border-radius: 6px; }
+    .note { font-size: 0.9rem; color: #777; margin-top: 0.5rem; }
+    button { padding: 0.7rem 1.5rem; font-size: 1rem; border-radius: 5px; border: none; background-color: #2c3e50; color: white; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>📘 나의 셀프 상태 점검</h1>
+
+  <div id="form">
+    <div class="section" id="emotion">
+      <h2>1. 이번 주 감정 체크</h2>
+      <label><input type="checkbox" /> 두려움</label>
+      <label><input type="checkbox" /> 분노</label>
+      <label><input type="checkbox" /> 수치심</label>
+      <label><input type="checkbox" /> 혼란</label>
+      <label><input type="checkbox" /> 지침 / 피로</label>
+      <label><input type="checkbox" /> 무감각 / 공허</label>
+      <label><input type="checkbox" /> 무기력</label>
+      <label><input type="checkbox" /> 우울</label>
+      <label><input type="checkbox" /> 평안 (샬롬)</label>
+      <label><input type="checkbox" /> 기쁨</label>
+      <label><input type="checkbox" /> 기대감</label>
+      <label><input type="text" placeholder="기타 감정..." /></label>
+    </div>
+
+    <div class="section" id="origin">
+      <h2>2. 감정의 근원과 시선 방향</h2>
+      <label><input type="checkbox" /> 사람의 반응</label>
+      <label><input type="checkbox" /> 내 상태나 능력</label>
+      <label><input type="checkbox" /> 과거의 경험</label>
+      <label><input type="checkbox" /> 미래에 대한 불안 / 기대</label>
+      <label><input type="checkbox" /> 상황 자체</label>
+      <label><input type="checkbox" /> 내 감정 자체</label>
+      <label><input type="checkbox" /> 하나님의 성품 / 말씀</label>
+      <label><input type="checkbox" /> 십자가</label>
+      <label><input type="checkbox" /> 공동체</label>
+      <label><input type="checkbox" /> 사명 / 비전</label>
+      <label><input type="checkbox" /> 정체 모름 (흐릿함)</label>
+    </div>
+
+    <div class="section" id="thoughts">
+      <h2>3. 반복된 생각/말/행동</h2>
+      <textarea placeholder="이번 주 자주 떠오른 생각, 말, 행동을 간단히 기록해보세요."></textarea>
+    </div>
+
+    <div class="section" id="reaction">
+      <h2>4. 내 반응</h2>
+      <label><input type="checkbox" /> 예배나 기도를 피하거나 미뤘다</label>
+      <label><input type="checkbox" /> 말씀 묵상이나 적용을 멈췄다</label>
+      <label><input type="checkbox" /> 감정을 억눌렀거나 폭발시켰다</label>
+      <label><input type="checkbox" /> 관계를 피하거나 단절시켰다</label>
+      <label><input type="checkbox" /> 자극적이거나 중독적인 행동을 반복했다</label>
+      <label><input type="checkbox" /> 비교, 자책, 부정적인 생각이 많았다</label>
+      <label><input type="checkbox" /> 겉으론 괜찮지만 내면은 지쳐 있었다</label>
+      <label><input type="checkbox" /> 타인을 판단하거나 원망했다</label>
+      <label><input type="checkbox" /> 일부러 바쁘게 움직이며 감정을 회피했다</label>
+      <div class="note">※ 3개 이상 체크 시 감정 주도 반응, 5개 이상은 회복이 필요합니다.</div>
+    </div>
+
+    <div class="section" id="recovery">
+      <h2>5. 회복 전략 실천</h2>
+      <label><input type="checkbox" /> 말씀 기준 세우기</label>
+      <label><input type="checkbox" /> 검증된 계시 받기</label>
+      <label><input type="checkbox" /> 말씀 묵상하기</label>
+      <label><input type="checkbox" /> 기도 회복하기</label>
+      <label><input type="checkbox" /> 공동체 참여하기</label>
+    </div>
+
+    <div class="section" id="flow">
+      <h2>🧭 영적 흐름 진단 (자가 체크)</h2>
+      <label><input type="checkbox" id="q108" /> 말씀보다 내 느낌이나 계시에 더 의지했다</label>
+      <label><input type="checkbox" id="q109" /> 리더나 멘토의 조언보다 내 판단을 우선했다</label>
+      <label><input type="checkbox" id="q110" /> 공동체보다 내 영적 경험을 더 신뢰했다</label>
+      <label><input type="checkbox" id="q111" /> 감정이 흐트러지면 말씀을 피하게 된다</label>
+      <label><input type="checkbox" id="q112" /> 피드백 없이 내 방식대로 결정했다</label>
+      <label><input type="checkbox" id="q114" /> 은혜가 느껴지지 않으면 예배/기도를 멈춘다</label>
+      <label><input type="checkbox" id="q115" /> 감정적 자극 없이는 집중이 어렵다</label>
+      <label><input type="checkbox" id="q150" /> 음란 콘텐츠나 행동이 반복된다</label>
+      <label><input type="checkbox" id="q151" /> 자극적인 모임/신앙만 선호한다</label>
+      <label><input type="checkbox" id="q152" /> 감정 기복에 따라 예배 태도가 바뀐다</label>
+      <label><input type="checkbox" id="q120" /> 다른 사람의 축복이 불편하게 느껴진다</label>
+      <label><input type="checkbox" id="q121" /> 항상 부족하다는 생각이 든다</label>
+      <label><input type="checkbox" id="q122" /> 자원을 잃을까 두려워 나눔을 꺼린다</label>
+      <label><input type="checkbox" id="q123" /> 도움을 요청하는 게 자존심 상한다</label>
+      <label><input type="checkbox" id="q124" /> 하나님의 공급보다 자원에 의존한다</label>
+      <label><input type="checkbox" id="q126" /> 내 생각이 리더보다 옳다고 느낀다</label>
+      <label><input type="checkbox" id="q127" /> 공동체 내에서 자주 거리감을 느껴진다</label>
+      <label><input type="checkbox" id="q128" /> 비판적 언행을 자주 하게 된다</label>
+      <label><input type="checkbox" id="q129" /> 권위자를 신뢰하기 어렵다</label>
+      <label><input type="checkbox" id="q130" /> 나만의 방식으로 따로 행동하려 한다</label>
+      <label><input type="checkbox" id="q132" /> 사람들과 있는 것이 피곤하고 불편하다</label>
+      <label><input type="checkbox" id="q133" /> 예배/기도에 점점 소극적이다</label>
+      <label><input type="checkbox" id="q134" /> 아무도 내 상황을 이해 못한다고 느껴진다</label>
+      <label><input type="checkbox" id="q135" /> 공동체에 있어도 외롭다</label>
+      <label><input type="checkbox" id="q136" /> 아예 아무것도 하기 싫고 방에만 있고 싶다</label>
+      <label><input type="checkbox" id="q138" /> 감정만으로 타인을 오해하거나 판단했다</label>
+      <label><input type="checkbox" id="q139" /> 말/행동을 나쁘게 해석한 적이 있다</label>
+      <label><input type="checkbox" id="q140" /> 공동체나 리더에 대한 신뢰가 무너졌다</label>
+      <label><input type="checkbox" id="q141" /> 과거 사건을 과장하거나 반복해서 떠올렸다</label>
+      <label><input type="checkbox" id="q142" /> 대화 없이 감정으로 결론 내렸다)</label>
+      <label><input type="checkbox" id="q144" /> 신앙은 열심인데 마음은 메마르다</label>
+      
+    </div>
+    <div class="section">
+      <button onclick="return showResult()">제출하고 결과 보기</button>
+    </div>
+  </div>
+
+  <div class="section" id="result" style="display:none">
+    <h2>📊 결과 요약</h2>
+    <p>제출이 완료되었습니다! 아래는 당신의 체크 결과를 바탕으로 한 간단한 요약입니다.</p>
+    <ul>
+      <li>많이 체크된 감정 반응: <strong id="reactionResult">분석 중...</strong></li>
+      <li>회복 전략 실천 정도: <strong id="recoveryResult">분석 중...</strong></li>
+      <li>가장 영향을 끼친 흐름 (예상): <strong id="flowResult">분석 중...</strong></li>
+    </ul>
+  </div>
+
+  <script>
+    function showResult() {
+      // 반응 집계
+      const rSel = Array.from(document.querySelectorAll('#reaction input[type=checkbox]')).filter(c=>c.checked).length;
+      const recSel = Array.from(document.querySelectorAll('#recovery input[type=checkbox]')).filter(c=>c.checked).length;
+      const ranges = { '미혹':[108,112], '음란':[150,154], '가난':[120,124], '분열':[126,130], '고립':[132,136], '왜곡':[138,142], '종교':[144,148] };
+      const flowCounts = {};
+      Object.entries(ranges).forEach(([k,[s,e]])=>{ flowCounts[k]=Array.from({length:e-s+1},(_,i)=>document.getElementById('q'+(s+i))).filter(el=>el&&el.checked).length; });
+      const top = Object.entries(flowCounts).sort((a,b)=>b[1]-a[1])[0];
+      document.getElementById('reactionResult').innerText = rSel>=5?'강하게 이끌림':rSel>=3?'주도 반응':'안정';
+      document.getElementById('recoveryResult').innerText = recSel>=5?'활발':recSel>=2?'중간':'미미';
+
+      // 폼 숨기고 결과 보이기 + 페이지 변경(hash)
+      document.getElementById('form').style.display='none';
+      document.getElementById('result').style.display='block';
+      window.location.hash = '#result';
+      return false;
+    }
+  </script>
+</body>
+</html>
