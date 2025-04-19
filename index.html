@@ -8,12 +8,15 @@
     body { font-family: 'Apple SD Gothic Neo', sans-serif; background:#fff; color:#333; margin:0; padding:2rem; max-width:600px; margin:auto; }
     h1 { text-align:center; color:#444; font-size:1.8rem; margin-bottom:2rem; }
     .section { margin-bottom:2.5rem; }
-    h2 { font-size:1.3rem; color:#2c3e50; margin-bottom:1rem; }
+    h2, h3 { color:#2c3e50; }
+    h2 { font-size:1.3rem; margin-bottom:1rem; }
+    h3 { font-size:1.2rem; margin-top:1.5rem; }
     label { display:block; margin-bottom:0.6rem; cursor:pointer; }
     textarea, input[type="text"] { width:100%; margin-top:0.5rem; padding:0.5rem; border:1px solid #ccc; border-radius:6px; }
     .note { font-size:0.9rem; color:#777; margin-top:0.5rem; }
     button { padding:0.7rem 1.5rem; font-size:1rem; border:none; border-radius:5px; background:#2c3e50; color:#fff; cursor:pointer; }
     #result { display:none; }
+    ol { padding-left:1.2rem; }
   </style>
 </head>
 <body>
@@ -38,7 +41,7 @@
       <label><input type="text" placeholder="기타 감정..." /></label>
     </div>
 
-    <!-- 2. 근원과 시선 -->
+    <!-- 2. 감정의 근원과 시선 방향 -->
     <div class="section" id="origin">
       <h2>2. 감정의 근원과 시선 방향</h2>
       <label><input type="checkbox" /> 사람의 반응</label>
@@ -54,7 +57,7 @@
       <label><input type="checkbox" /> 정체 모름 (흐릿함)</label>
     </div>
 
-    <!-- 3. 반복된 생각 -->
+    <!-- 3. 반복된 생각/말/행동 -->
     <div class="section" id="thoughts">
       <h2>3. 반복된 생각/말/행동</h2>
       <textarea placeholder="이번 주 자주 떠오른 생각, 말, 행동을 간단히 기록해보세요."></textarea>
@@ -115,8 +118,9 @@
     <h2>📊 결과 요약</h2>
     <ul>
       <li>많이 체크된 감정 반응: <strong id="reactionResult"></strong></li>
-      <li>가장 영향을 끼친 흐름: <strong id="flowResult"></strong></li>
     </ul>
+    <h3>영적 흐름 영향 순위</h3>
+    <ol id="flowRanking"></ol>
     <div class="note">새로고침하면 다시 작성할 수 있습니다.</div>
   </div>
 
@@ -137,20 +141,35 @@
         '왜곡': [138,142],
         '종교': [144,148]
       };
-      let flowCounts = {};
+      const flowCounts = {};
       Object.entries(ranges).forEach(([flow,[s,e]]) => {
         let cnt = 0;
-        for (let i=s; i<=e; i++) {
+        for (let i = s; i <= e; i++) {
           const el = document.getElementById(`q${i}`);
           if (el && el.checked) cnt++;
         }
         flowCounts[flow] = cnt;
       });
-      const [topFlow, topNum] = Object.entries(flowCounts).sort((a,b)=>b[1]-a[1])[0] || [null,0];
-      const flowText = topNum > 0 ? `지금 ${topFlow} 흐름에 영향받고 있습니다. (${topNum}개)` : '특별히 두드러지는 흐름 없음';
-      document.getElementById('flowResult').innerText = flowText;
 
-      // 토글
+      // 순위 정렬 및 출력
+      const sorted = Object.entries(flowCounts)
+        .sort((a,b) => b[1] - a[1]);
+      const ol = document.getElementById('flowRanking');
+      ol.innerHTML = '';
+      sorted.forEach(([flow, count]) => {
+        if (count > 0) {
+          const li = document.createElement('li');
+          li.innerText = `${flow} 흐름: ${count}개`;
+          ol.appendChild(li);
+        }
+      });
+      if (!ol.children.length) {
+        const li = document.createElement('li');
+        li.innerText = '영향받은 흐름이 없습니다.';
+        ol.appendChild(li);
+      }
+
+      // 폼/결과 토글
       document.getElementById('form').style.display = 'none';
       document.getElementById('result').style.display = 'block';
     }
